@@ -1,12 +1,21 @@
 package randomNameGenerator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
+/**
+ * Generates random names.
+ * @author Patrick Murphy
+ *
+ */
 public class NameGenerator {
 
 	private Random rand = new Random();
-	private char[] allVowels = {'a','A','e','E','i','I','o','O','u','U','y','Y'};
+	private List<Character> allVowels = new ArrayList<Character>();
+
 	private char[] lowerVowels = {'a','e','i','o'};
 	private char[] upperVowels = {'A','E','I','O'};
 	private char[] lowerNV1 = {'n','r','s','t'};
@@ -21,8 +30,15 @@ public class NameGenerator {
 	
 	public NameGenerator()
 	{
+		Collections.addAll(allVowels,'a','A','e','E','i','I','o','O','u','U','y','Y');
 	}
 	
+	/**
+	 * Generates a random name and returns it.
+	 * Could be as short as 3 letter, and as long as maxLength.
+	 * @param maxLength
+	 * @return random name 
+	 */
 	public String generate(int maxLength)
 	{
 		StringBuilder name = new StringBuilder(1);
@@ -45,11 +61,35 @@ public class NameGenerator {
 		
 	}
 	
+	/*
+	 * Returns an appropriate next letter based on the previous two letter.
+	 */
 	private char nextLetter(String name)
 	{
 			if(name.length()>2)
 			{
-				return randomLetter();
+				boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
+				boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
+				if(oneAwayVowel && twoAwayVowel)
+				{
+					return randomNonVowel(boolChance(1,1000));
+				}
+				else if(!oneAwayVowel)
+				{
+					return randomVowel(boolChance(1,1000));
+				}
+				else
+				{
+					boolean vowel = boolChance(1,2);
+					if(vowel) 
+					{
+						return randomVowel(boolChance(1,1000));
+					}
+					else
+					{
+						return randomNonVowel(boolChance(1,1000));
+					}
+				}
 			}
 			else
 			{
@@ -145,6 +185,10 @@ public class NameGenerator {
 		}
 	}
 	
+	/*
+	 * Returns a random letter.
+	 * Higher chance of returning a lower case letter.
+	 */
 	private char randomLetter()
 	{
 		int capitalChance = rand.nextInt(10);
@@ -170,10 +214,32 @@ public class NameGenerator {
 	
 			
 	}
+	/*
+	 * returns a boolean based on chance defined by the parameters.
+	 * chance is the likelihood of rolling true out of outOf.
+	 */
+	private boolean boolChance(int chance, int outOf)
+	{
+		int roll = rand.nextInt(outOf);
+		boolean result;
+		if(roll<chance)
+		{
+			result = true;
+		}
+		else
+		{
+			result = false;
+		}
+		return result;
+	}
 	
+	/*
+	 * Returns true if c is a vowel.
+	 * Otherwise it returns false.
+	 */
 	private boolean isVowel(char c)
 	{
-		if(Arrays.asList(allVowels).contains(c))
+		if(allVowels.contains(c))
 		{
 			return true;
 		}

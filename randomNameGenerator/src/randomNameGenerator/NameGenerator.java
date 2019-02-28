@@ -40,7 +40,7 @@ public class NameGenerator {
 	{
 		Collections.addAll(allVowels,'a','A','e','E','i','I','o','O','u','U','y','Y');
 		Collections.addAll(noRepeats, 'x','X','u','U','b','B','i','I','y','Y');
-		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F');
+		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F','t','T');
 		Collections.addAll(mustFollowVowel, 'x','X');
 		Collections.addAll(lead1, 's','S');
 		Collections.addAll(follow1, 'm','M','n','N','p','P');
@@ -70,6 +70,8 @@ public class NameGenerator {
 		{
 			name.append(randomNonVowel(true));
 		}
+		
+		
 		for(int i = 1;i<nameLength;i++)
 		{
 			name.append(nextLetter(name.toString()));
@@ -97,28 +99,30 @@ public class NameGenerator {
 						char twoAway = name.charAt(name.length()-2);
 						boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
 						boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
+						
+						
 						if(oneAwayVowel && twoAwayVowel)
 						{
-							boolean anotherVowel =boolChance(1,5000);
+							boolean anotherVowel =boolChance(1,1000);
 							if(anotherVowel)
 							{
-								nextChar = randomVowel(boolChance(1,1000));
+								nextChar = randomVowel(boolChance(1,700));
 							}
 							else
 							{
-								nextChar = randomNonVowel(boolChance(1,1000));
+								nextChar = randomNonVowel(boolChance(1,700));
 							}
 						}
 						else if(!oneAwayVowel && !twoAwayVowel)
 						{
-							boolean anotherNonVowel = boolChance(1,5000);
+							boolean anotherNonVowel = boolChance(1,1000);
 							if(anotherNonVowel)
 							{
-								nextChar = randomNonVowel(boolChance(1,1000));
+								nextChar = randomNonVowel(boolChance(1,700));
 							}
 							else
 							{
-								nextChar = randomVowel(boolChance(1,1000));
+								nextChar = randomVowel(boolChance(1,700));
 							}
 						}
 						else
@@ -126,22 +130,23 @@ public class NameGenerator {
 							boolean vowel = boolChance(1,2);
 							if(vowel) 
 							{
-								nextChar = randomVowel(boolChance(1,1000));
+								nextChar = randomVowel(boolChance(1,700));
 							}
 							else
 							{
-								nextChar = randomNonVowel(boolChance(1,1000));
+								nextChar = randomNonVowel(boolChance(1,700));
 							}
 						}
 											
-						//Validation of nextChar
+			
+
 						validChar = validateChar(nextChar,name);
 						
 					}
 					else
 					{
 						nextChar = randomLetter();
-						validChar = validateChar(nextChar,name);
+						validChar = validateChar(nextChar,name);	
 					}
 
 					
@@ -155,13 +160,20 @@ public class NameGenerator {
 	{
 		boolean validChar;
 		char oneAway = str.charAt(str.length()-1);
-		if(str.length()>2)
+		if(str.length()>1)
 		{
-			char twoAway = str.charAt(str.length()-2);
-			if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c && !isVowel(twoAway))
-			{
-				validChar = false;
-			}
+				char twoAway = str.charAt(str.length()-2);
+				if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c && !isVowel(twoAway))
+				{
+					validChar = false;
+				}
+		}
+		else
+		{
+				if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c)
+				{
+					validChar = false;
+				}
 		}
 		
 		if(noRepeats.contains(c) && oneAway == c)
@@ -179,6 +191,7 @@ public class NameGenerator {
 		
 		return validChar;
 	}
+	
 	/*
 	 * Returns a random vowel character.
 	 * Requires a boolean, to tell if it is upper or lower case.
@@ -215,13 +228,16 @@ public class NameGenerator {
 				return 'u';
 			}
 		}
-		if(isUpper)
+		else 
 		{
-			return 'Y';
-		}
-		else
-		{
-			return 'y';
+			if(isUpper)
+			{
+				return 'Y';
+			}
+			else
+			{
+				return 'y';
+			}
 		}
 	}
 	

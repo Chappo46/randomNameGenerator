@@ -20,6 +20,33 @@ public class NameGenerator {
 	private List<Character> noRepeats = new ArrayList<Character>();
 	private List<Character> noRepeatsUnlessVowelFirst = new ArrayList<Character>();
 	private List<Character> mustFollowVowel = new ArrayList<Character>();
+	private List<Character> higherH = new ArrayList<Character>();
+	private List<Character> ANA = new ArrayList<Character>();
+	private List<Character> ANB = new ArrayList<Character>();
+	private List<Character> ANC = new ArrayList<Character>();
+	private List<Character> AND = new ArrayList<Character>();
+	private List<Character> ANE = new ArrayList<Character>();
+	private List<Character> ANF = new ArrayList<Character>();
+	private List<Character> ANG = new ArrayList<Character>();
+	private List<Character> ANH = new ArrayList<Character>();
+	private List<Character> ANI = new ArrayList<Character>();
+	private List<Character> ANJ = new ArrayList<Character>();
+	private List<Character> ANK = new ArrayList<Character>();
+	private List<Character> ANL = new ArrayList<Character>();
+	private List<Character> ANM = new ArrayList<Character>();
+	private List<Character> ANN = new ArrayList<Character>();
+	private List<Character> ANO = new ArrayList<Character>();
+	private List<Character> ANP = new ArrayList<Character>();
+	private List<Character> ANQ = new ArrayList<Character>();
+	private List<Character> ANR = new ArrayList<Character>();
+	private List<Character> ANS = new ArrayList<Character>();
+	private List<Character> ANT = new ArrayList<Character>();
+	private List<Character> ANU = new ArrayList<Character>();
+	private List<Character> ANV = new ArrayList<Character>();
+	private List<Character> ANW = new ArrayList<Character>();
+	private List<Character> ANX = new ArrayList<Character>();
+	private List<Character> ANY = new ArrayList<Character>();
+	private List<Character> ANZ = new ArrayList<Character>();
 	
 	private char[] lowerVowels = {'a','e','i','o'};
 	private char[] upperVowels = {'A','E','I','O'};
@@ -29,6 +56,7 @@ public class NameGenerator {
 	private char[] upperNV2 = {'C','D','F','G','H','L','M','P'};
 	private char[] lowerNV3 = {'b','j','k','q','w','x','z','y'};
 	private char[] upperNV3 = {'B','J','K','Q','W','X','Z','Y'};
+	
 	
 	
 	private char[] vowelFirst = {'x','X'};
@@ -44,6 +72,111 @@ public class NameGenerator {
 		Collections.addAll(mustFollowVowel, 'x','X','j','J');
 		Collections.addAll(lead1, 's','S');
 		Collections.addAll(follow1, 'm','M','n','N','p','P');
+		Collections.addAll(higherH, 't','T','c','C','s','S');
+		
+		Collections.addAll(ANA, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANB, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANC, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(AND, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANE, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANF, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANG, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANH, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANI, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANJ, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANK, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANL, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANM, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANN, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANO, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANP, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANQ, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANR, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANS, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANT, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANU, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANV, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANW, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANX, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANY, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
+		
+		Collections.addAll(ANZ, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
+				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
+				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
 
 	}
 	
@@ -61,15 +194,16 @@ public class NameGenerator {
 		}
 		StringBuilder name = new StringBuilder(1);
 		int nameLength = rand.nextInt(maxLength-3)+3;
-		boolean firstVowel = rand.nextBoolean();
-		if(firstVowel)
-		{
-			name.append(randomVowel(true));
-		}
-		else
-		{
-			name.append(randomNonVowel(true));
-		}
+//		boolean firstVowel = rand.nextBoolean();
+//		if(firstVowel)
+//		{
+//			name.append(randomVowel(true));
+//		}
+//		else
+//		{
+//			name.append(randomNonVowel(true));
+//		}
+		name.append(randomLetter(true));
 		
 		
 		for(int i = 1;i<nameLength;i++)
@@ -100,7 +234,18 @@ public class NameGenerator {
 						boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
 						boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
 						
-						
+						if(higherH.contains(oneAway));
+						{
+							if(boolChance(4,10)==true)
+							{
+								nextChar = 'h';
+							}
+							else
+							{
+	
+							}
+						}
+						//if last 2 are vowels 999 out of 1000 chance of non vowel
 						if(oneAwayVowel && twoAwayVowel)
 						{
 							boolean anotherVowel =boolChance(1,1000);
@@ -113,6 +258,7 @@ public class NameGenerator {
 								nextChar = randomNonVowel(boolChance(1,700));
 							}
 						}
+						//if last 2 are non vowels 999 out of 1000 chance of vowel
 						else if(!oneAwayVowel && !twoAwayVowel)
 						{
 							boolean anotherNonVowel = boolChance(1,1000);
@@ -127,23 +273,14 @@ public class NameGenerator {
 						}
 						else
 						{
-							boolean vowel = boolChance(1,2);
-							if(vowel) 
-							{
-								nextChar = randomVowel(boolChance(1,700));
-							}
-							else
-							{
-								nextChar = randomNonVowel(boolChance(1,700));
-							}
+							nextChar = randomLetter(boolChance(1,1000));
 						}
 
 						validChar = validateChar(nextChar,name);
-						
-					}
+					}	
 					else
 					{
-						nextChar = randomLetter();
+						nextChar = randomLetter(boolChance(1,1000));
 						validChar = validateChar(nextChar,name);	
 					}
 
@@ -165,29 +302,29 @@ public class NameGenerator {
 				
 				if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c && !isVowel(twoAway))
 				{
-					validChar = boolChance(95,100);
+					validChar = boolChance(5,100);
 				}
 				
 				if(mustFollowVowel.contains(c) && c == oneAway)
 				{
-					validChar = boolChance(95,100);
+					validChar = boolChance(5,100);
 				}
 		}
 
 		
 		if(noRepeats.contains(c) && oneAway == c)
 		{
-			validChar = boolChance(95,100);
+			validChar = boolChance(5,100);
 		}
 		
 		if(str.length()==1 && noRepeatsUnlessVowelFirst.contains(c) && oneAway == c)
 		{
-			validChar = boolChance(95,100);
+			validChar = boolChance(5,100);
 		}
 		
 		if(mustFollowVowel.contains(c) && !isVowel(oneAway))
 		{
-			validChar = boolChance(95,100);
+			validChar = boolChance(5,100);
 		}
 
 		return validChar;
@@ -288,10 +425,10 @@ public class NameGenerator {
 	 * Returns a random letter.
 	 * Higher chance of returning a lower case letter.
 	 */
-	private char randomLetter()
+	private char randomLetter(boolean cap)
 	{
 
-		boolean capital = boolChance(1,1000);
+		boolean capital = cap;
 		boolean vowel = rand.nextBoolean();
 		
 		if(vowel)
@@ -301,9 +438,7 @@ public class NameGenerator {
 		else
 		{
 			return randomNonVowel(capital);
-		}
-	
-			
+		}	
 	}
 	/*
 	 * returns a boolean based on chance defined by the parameters.

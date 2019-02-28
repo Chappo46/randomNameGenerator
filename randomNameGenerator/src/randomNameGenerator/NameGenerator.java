@@ -41,6 +41,10 @@ public class NameGenerator {
 	 */
 	public String generate(int maxLength)
 	{
+		if(maxLength<3)
+		{
+			maxLength=0;
+		}
 		StringBuilder name = new StringBuilder(1);
 		int nameLength = rand.nextInt(maxLength-3)+3;
 		boolean firstVowel = rand.nextBoolean();
@@ -74,7 +78,7 @@ public class NameGenerator {
 				{
 					return randomNonVowel(boolChance(1,1000));
 				}
-				else if(!oneAwayVowel)
+				else if(!oneAwayVowel && !twoAwayVowel)
 				{
 					return randomVowel(boolChance(1,1000));
 				}
@@ -191,17 +195,9 @@ public class NameGenerator {
 	 */
 	private char randomLetter()
 	{
-		int capitalChance = rand.nextInt(10);
-		boolean capital;
+
+		boolean capital = boolChance(1,1000);
 		boolean vowel = rand.nextBoolean();
-		if(capitalChance<8)
-		{
-			capital = false;
-		}
-		else
-		{
-			capital = true;
-		}
 		
 		if(vowel)
 		{
@@ -243,7 +239,7 @@ public class NameGenerator {
 		{
 			return true;
 		}
-		else return true;
+		else return false;
 	}
 }
 

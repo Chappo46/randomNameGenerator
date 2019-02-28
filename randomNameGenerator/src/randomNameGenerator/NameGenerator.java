@@ -15,7 +15,12 @@ public class NameGenerator {
 
 	private Random rand = new Random();
 	private List<Character> allVowels = new ArrayList<Character>();
-
+	private List<Character> lead1 = new ArrayList<Character>();
+	private List<Character> follow1 = new ArrayList<Character>();
+	private List<Character> noRepeats = new ArrayList<Character>();
+	private List<Character> noRepeatsUnlessVowelFirst = new ArrayList<Character>();
+	private List<Character> mustFollowVowel = new ArrayList<Character>();
+	
 	private char[] lowerVowels = {'a','e','i','o'};
 	private char[] upperVowels = {'A','E','I','O'};
 	private char[] lowerNV1 = {'n','r','s','t'};
@@ -24,13 +29,22 @@ public class NameGenerator {
 	private char[] upperNV2 = {'C','D','F','G','H','L','M','P'};
 	private char[] lowerNV3 = {'b','j','k','q','w','x','z','y'};
 	private char[] upperNV3 = {'B','J','K','Q','W','X','Z','Y'};
+	
+	
 	private char[] vowelFirst = {'x','X'};
 	private char[] trailingSpec = {'l','r'};
+	
 
 	
 	public NameGenerator()
 	{
 		Collections.addAll(allVowels,'a','A','e','E','i','I','o','O','u','U','y','Y');
+		Collections.addAll(noRepeats, 'x','X','u','U','b','B','i','I','y','Y');
+		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F');
+		Collections.addAll(mustFollowVowel, 'x','X');
+		Collections.addAll(lead1, 's','S');
+		Collections.addAll(follow1, 'm','M','n','N','p','P');
+
 	}
 	
 	/**
@@ -70,37 +84,101 @@ public class NameGenerator {
 	 */
 	private char nextLetter(String name)
 	{
-			if(name.length()>2)
-			{
-				boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
-				boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
-				if(oneAwayVowel && twoAwayVowel)
+
+
+				char nextChar;
+				boolean validChar;
+				
+				do 
 				{
-					return randomNonVowel(boolChance(1,1000));
-				}
-				else if(!oneAwayVowel && !twoAwayVowel)
-				{
-					return randomVowel(boolChance(1,1000));
-				}
-				else
-				{
-					boolean vowel = boolChance(1,2);
-					if(vowel) 
+					if(name.length()>=2)
 					{
-						return randomVowel(boolChance(1,1000));
+						char oneAway = name.charAt(name.length()-1);
+						char twoAway = name.charAt(name.length()-2);
+						boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
+						boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
+						if(oneAwayVowel && twoAwayVowel)
+						{
+							boolean anotherVowel =boolChance(1,5000);
+							if(anotherVowel)
+							{
+								nextChar = randomVowel(boolChance(1,1000));
+							}
+							else
+							{
+								nextChar = randomNonVowel(boolChance(1,1000));
+							}
+						}
+						else if(!oneAwayVowel && !twoAwayVowel)
+						{
+							boolean anotherNonVowel = boolChance(1,5000);
+							if(anotherNonVowel)
+							{
+								nextChar = randomNonVowel(boolChance(1,1000));
+							}
+							else
+							{
+								nextChar = randomVowel(boolChance(1,1000));
+							}
+						}
+						else
+						{
+							boolean vowel = boolChance(1,2);
+							if(vowel) 
+							{
+								nextChar = randomVowel(boolChance(1,1000));
+							}
+							else
+							{
+								nextChar = randomNonVowel(boolChance(1,1000));
+							}
+						}
+											
+						//Validation of nextChar
+						validChar = validateChar(nextChar,name);
+						
 					}
 					else
 					{
-						return randomNonVowel(boolChance(1,1000));
+						nextChar = randomLetter();
+						validChar = validateChar(nextChar,name);
 					}
-				}
-			}
-			else
-			{
-				return randomLetter();
-			}
+
+					
+				}while(!validChar);
+				return nextChar;
+
 	}
 	
+	
+	private boolean validateChar(char c, String str)
+	{
+		boolean validChar;
+		char oneAway = str.charAt(str.length()-1);
+		if(str.length()>2)
+		{
+			char twoAway = str.charAt(str.length()-2);
+			if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c && !isVowel(twoAway))
+			{
+				validChar = false;
+			}
+		}
+		
+		if(noRepeats.contains(c) && oneAway == c)
+		{
+			validChar = false;
+		}
+		else if(mustFollowVowel.contains(c) && !isVowel(oneAway))
+		{
+			validChar = false;
+		}
+		else
+		{
+			validChar = true;
+		}
+		
+		return validChar;
+	}
 	/*
 	 * Returns a random vowel character.
 	 * Requires a boolean, to tell if it is upper or lower case.

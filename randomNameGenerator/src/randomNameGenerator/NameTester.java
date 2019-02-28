@@ -6,8 +6,7 @@ public class NameTester {
 	{
 		NameGenerator ng = new NameGenerator();
 		
-		for(int i = 0;i<100
-				;i++)
+		for(int i = 0;i<10;i++)
 		{
 			System.out.print(ng.generate(8));
 			System.out.printf("\t\t\t");

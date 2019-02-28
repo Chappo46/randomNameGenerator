@@ -40,8 +40,8 @@ public class NameGenerator {
 	{
 		Collections.addAll(allVowels,'a','A','e','E','i','I','o','O','u','U','y','Y');
 		Collections.addAll(noRepeats, 'x','X','u','U','b','B','i','I','y','Y');
-		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F','t','T');
-		Collections.addAll(mustFollowVowel, 'x','X');
+		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F','t','T','r','R');
+		Collections.addAll(mustFollowVowel, 'x','X','j','J');
 		Collections.addAll(lead1, 's','S');
 		Collections.addAll(follow1, 'm','M','n','N','p','P');
 
@@ -137,8 +137,6 @@ public class NameGenerator {
 								nextChar = randomNonVowel(boolChance(1,700));
 							}
 						}
-											
-			
 
 						validChar = validateChar(nextChar,name);
 						
@@ -158,37 +156,40 @@ public class NameGenerator {
 	
 	private boolean validateChar(char c, String str)
 	{
-		boolean validChar;
+		boolean validChar = true;
 		char oneAway = str.charAt(str.length()-1);
+		
 		if(str.length()>1)
 		{
 				char twoAway = str.charAt(str.length()-2);
+				
 				if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c && !isVowel(twoAway))
 				{
-					validChar = false;
+					validChar = boolChance(95,100);
 				}
-		}
-		else
-		{
-				if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c)
+				
+				if(mustFollowVowel.contains(c) && c == oneAway)
 				{
-					validChar = false;
+					validChar = boolChance(95,100);
 				}
 		}
+
 		
 		if(noRepeats.contains(c) && oneAway == c)
 		{
-			validChar = false;
-		}
-		else if(mustFollowVowel.contains(c) && !isVowel(oneAway))
-		{
-			validChar = false;
-		}
-		else
-		{
-			validChar = true;
+			validChar = boolChance(95,100);
 		}
 		
+		if(str.length()==1 && noRepeatsUnlessVowelFirst.contains(c) && oneAway == c)
+		{
+			validChar = boolChance(95,100);
+		}
+		
+		if(mustFollowVowel.contains(c) && !isVowel(oneAway))
+		{
+			validChar = boolChance(95,100);
+		}
+
 		return validChar;
 	}
 	

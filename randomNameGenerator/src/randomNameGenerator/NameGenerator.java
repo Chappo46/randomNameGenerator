@@ -20,7 +20,7 @@ public class NameGenerator {
 	private List<Character> noRepeats = new ArrayList<Character>();
 	private List<Character> noRepeatsUnlessVowelFirst = new ArrayList<Character>();
 	private List<Character> mustFollowVowel = new ArrayList<Character>();
-
+	private List<Character> higherH = new ArrayList<Character>();
 	
 	private char[] lowerVowels = {'a','e','i','o'};
 	private char[] upperVowels = {'A','E','I','O'};
@@ -41,6 +41,7 @@ public class NameGenerator {
 		Collections.addAll(vowelsNoY,'a','A','e','E','i','I','o','O','u','U');
 		Collections.addAll(noRepeats, 'x','X','u','U','b','B','i','I','y','Y');
 		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F','t','T','r','R');
+		Collections.addAll(higherH, 's','S','t','T','c','C','p','P');
 	}
 	
 	/**
@@ -51,13 +52,19 @@ public class NameGenerator {
 	 */
 	public String generate(int maxLength)
 	{
-		this.maxLength = maxLength;
-		if(maxLength<3)
+		int nameLength;
+		if(maxLength<4)
 		{
-			maxLength=0;
+			nameLength = 3;
 		}
+		else
+		{
+			nameLength = rand.nextInt(maxLength-3)+3;
+		}
+		this.maxLength = maxLength;
+	
 		StringBuilder name = new StringBuilder(1);
-		int nameLength = rand.nextInt(maxLength-3)+3;
+		
 		name.append(randomLetter(true));
 		
 		
@@ -86,59 +93,46 @@ public class NameGenerator {
 						char twoAway = name.charAt(name.length()-2);
 						boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
 						boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
-	
-						if(name.length()==maxLength-1)
+						
+
+						if(maxLength==3)
+						{
+							{
+								if(allVowels.contains(name.charAt(name.length()-1)))
+								{
+									nextChar = anotherVowel();
+								}
+								else
+								{
+									nextChar = anotherNonVowel();
+								}
+							}
+						}
+						else if(higherH.contains(oneAway) && boolChance(5,10))
+						{
+								nextChar = 'h';	
+						}
+						
+						else if(name.length()==maxLength-1)
 						{
 							if(allVowels.contains(name.charAt(0)))
 							{
-								boolean anotherVowel =boolChance(1,1000);
-								if(anotherVowel)
-								{
-									nextChar = randomVowel(boolChance(1,700));
-								}
-								else
-								{
-									nextChar = randomNonVowel(boolChance(1,700));
-								}
+								nextChar = anotherVowel();
 							}
 							else
 							{
-								boolean anotherNonVowel = boolChance(1,1000);
-								if(anotherNonVowel)
-								{
-									nextChar = randomNonVowel(boolChance(1,700));
-								}
-								else
-								{
-									nextChar = randomVowel(boolChance(1,700));
-								}
+								nextChar = anotherNonVowel();
 							}
 						}
 						//if last 2 are vowels 999 out of 1000 chance of non vowel
 						else if(oneAwayVowel && twoAwayVowel)
 						{
-							boolean anotherVowel =boolChance(1,1000);
-							if(anotherVowel)
-							{
-								nextChar = randomVowel(boolChance(1,700));
-							}
-							else
-							{
-								nextChar = randomNonVowel(boolChance(1,700));
-							}
+							nextChar = anotherVowel();
 						}
 						//if last 2 are non vowels 999 out of 1000 chance of vowel
 						else if(!oneAwayVowel && !twoAwayVowel)
 						{
-							boolean anotherNonVowel = boolChance(1,1000);
-							if(anotherNonVowel)
-							{
-								nextChar = randomNonVowel(boolChance(1,700));
-							}
-							else
-							{
-								nextChar = randomVowel(boolChance(1,700));
-							}
+							nextChar = anotherNonVowel();
 						}
 						else
 						{
@@ -151,40 +145,16 @@ public class NameGenerator {
 					{
 						if(name.charAt(0) == 'Y')
 						{
-							boolean anotherNonVowel = boolChance(1,1000);
-							if(anotherNonVowel)
-							{
-								nextChar = randomNonVowel(boolChance(1,700));
-							}
-							else
-							{
-								nextChar = randomVowel(boolChance(1,700));
-							}
+							nextChar = anotherNonVowel();
 						}
 						
 						if(vowelsNoY.contains(name.charAt(0)))
 						{
-							boolean anotherVowel =boolChance(1,1000);
-							if(anotherVowel)
-							{
-								nextChar = randomVowel(boolChance(1,700));
-							}
-							else
-							{
-								nextChar = randomNonVowel(boolChance(1,700));
-							}
+							nextChar = anotherVowel();
 						}
 						else
 						{
-							boolean anotherNonVowel = boolChance(1,1000);
-							if(anotherNonVowel)
-							{
-								nextChar = randomNonVowel(boolChance(1,700));
-							}
-							else
-							{
-								nextChar = randomVowel(boolChance(1,700));
-							}
+							nextChar = anotherNonVowel();
 						}
 						validChar = validateChar(nextChar,name);	
 					}
@@ -193,6 +163,37 @@ public class NameGenerator {
 				}while(!validChar);
 				return nextChar;
 
+	}
+	
+	private char anotherVowel()
+	{
+		char nextChar;
+		boolean anotherVowel =boolChance(1,7000);
+		if(anotherVowel)
+		{
+			nextChar = randomVowel(boolChance(1,500));
+		}
+		else
+		{
+			nextChar = randomNonVowel(boolChance(1,500));
+		}
+		return nextChar;
+		
+	}
+	
+	private char anotherNonVowel()
+	{
+		char nextChar;
+		boolean anotherNonVowel = boolChance(1,7000);
+		if(anotherNonVowel)
+		{
+			nextChar = randomNonVowel(boolChance(1,500));
+		}
+		else
+		{
+			nextChar = randomVowel(boolChance(1,500));
+		}
+		return nextChar;
 	}
 	
 	/*
@@ -216,7 +217,7 @@ public class NameGenerator {
 		
 		if(noRepeats.contains(c) && oneAway == c)
 		{
-			validChar = boolChance(5,100);
+			validChar = boolChance(2,100);
 		}
 		
 		if(str.length()==1 && noRepeatsUnlessVowelFirst.contains(c) && oneAway == c)
@@ -226,7 +227,7 @@ public class NameGenerator {
 		
 		if(mustFollowVowel.contains(c) && !isVowel(oneAway))
 		{
-			validChar = boolChance(5,100);
+			validChar = boolChance(2,100);
 		}
 		
 		validChar = appropriateNext(c);
@@ -365,12 +366,14 @@ public class NameGenerator {
 			valid = letterPercent(c,100,lowerVowels);
 			if(valid == false) valid = letterPercent(c,100,upperVowels);
 			if(valid == false) valid = letterPercent(c,30,'b');
+			if(valid == false) valid = letterPercent(c,40,'c');
 			if(valid == false) valid = boolChance(3,100);
 			return valid;
 		case 'M':
 			valid = letterPercent(c,100,lowerVowels);
 			if(valid == false) valid = letterPercent(c,100,upperVowels);
 			if(valid == false) valid = letterPercent(c,30,'b');
+			if(valid == false) valid = letterPercent(c,60,'c');
 			if(valid == false) valid = boolChance(3,100);
 			return valid;
 		case 'n':

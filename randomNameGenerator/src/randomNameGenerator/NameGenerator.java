@@ -14,39 +14,13 @@ import java.util.Random;
 public class NameGenerator {
 
 	private Random rand = new Random();
+	private int maxLength;
 	private List<Character> allVowels = new ArrayList<Character>();
-	private List<Character> lead1 = new ArrayList<Character>();
-	private List<Character> follow1 = new ArrayList<Character>();
+	private List<Character> vowelsNoY = new ArrayList<Character>();
 	private List<Character> noRepeats = new ArrayList<Character>();
 	private List<Character> noRepeatsUnlessVowelFirst = new ArrayList<Character>();
 	private List<Character> mustFollowVowel = new ArrayList<Character>();
-	private List<Character> higherH = new ArrayList<Character>();
-	private List<Character> ANA = new ArrayList<Character>();
-	private List<Character> ANB = new ArrayList<Character>();
-	private List<Character> ANC = new ArrayList<Character>();
-	private List<Character> AND = new ArrayList<Character>();
-	private List<Character> ANE = new ArrayList<Character>();
-	private List<Character> ANF = new ArrayList<Character>();
-	private List<Character> ANG = new ArrayList<Character>();
-	private List<Character> ANH = new ArrayList<Character>();
-	private List<Character> ANI = new ArrayList<Character>();
-	private List<Character> ANJ = new ArrayList<Character>();
-	private List<Character> ANK = new ArrayList<Character>();
-	private List<Character> ANL = new ArrayList<Character>();
-	private List<Character> ANM = new ArrayList<Character>();
-	private List<Character> ANN = new ArrayList<Character>();
-	private List<Character> ANO = new ArrayList<Character>();
-	private List<Character> ANP = new ArrayList<Character>();
-	private List<Character> ANQ = new ArrayList<Character>();
-	private List<Character> ANR = new ArrayList<Character>();
-	private List<Character> ANS = new ArrayList<Character>();
-	private List<Character> ANT = new ArrayList<Character>();
-	private List<Character> ANU = new ArrayList<Character>();
-	private List<Character> ANV = new ArrayList<Character>();
-	private List<Character> ANW = new ArrayList<Character>();
-	private List<Character> ANX = new ArrayList<Character>();
-	private List<Character> ANY = new ArrayList<Character>();
-	private List<Character> ANZ = new ArrayList<Character>();
+
 	
 	private char[] lowerVowels = {'a','e','i','o'};
 	private char[] upperVowels = {'A','E','I','O'};
@@ -56,128 +30,17 @@ public class NameGenerator {
 	private char[] upperNV2 = {'C','D','F','G','H','L','M','P'};
 	private char[] lowerNV3 = {'b','j','k','q','w','x','z','y'};
 	private char[] upperNV3 = {'B','J','K','Q','W','X','Z','Y'};
-	
-	
-	
-	private char[] vowelFirst = {'x','X'};
-	private char[] trailingSpec = {'l','r'};
+	private char[] trailingSpec1 = {'l','r'};
+	private char[] trailingSpec2 = {'b','d','k','l','m','n','t','v'};
 	
 
 	
 	public NameGenerator()
 	{
 		Collections.addAll(allVowels,'a','A','e','E','i','I','o','O','u','U','y','Y');
+		Collections.addAll(vowelsNoY,'a','A','e','E','i','I','o','O','u','U');
 		Collections.addAll(noRepeats, 'x','X','u','U','b','B','i','I','y','Y');
 		Collections.addAll(noRepeatsUnlessVowelFirst, 's','S','f','F','t','T','r','R');
-		Collections.addAll(mustFollowVowel, 'x','X','j','J');
-		Collections.addAll(lead1, 's','S');
-		Collections.addAll(follow1, 'm','M','n','N','p','P');
-		Collections.addAll(higherH, 't','T','c','C','s','S');
-		
-		Collections.addAll(ANA, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANB, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANC, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(AND, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANE, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANF, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANG, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANH, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANI, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANJ, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANK, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANL, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANM, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANN, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANO, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANP, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANQ, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANR, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANS, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANT, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANU, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANV, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANW, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANX, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANY, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-		
-		Collections.addAll(ANZ, 'a','A','b','B','c','C','d','D','e','E','f','F','g','G',
-				'h','H','i','I','j','J','k','K','l','L','m','M','n','N','o','O','p','P',
-				'q','Q','r','R','s','S','t','T','u','U','v','V','w','W','x','X','y','Y','z','Z');
-
 	}
 	
 	/**
@@ -188,21 +51,13 @@ public class NameGenerator {
 	 */
 	public String generate(int maxLength)
 	{
+		this.maxLength = maxLength;
 		if(maxLength<3)
 		{
 			maxLength=0;
 		}
 		StringBuilder name = new StringBuilder(1);
 		int nameLength = rand.nextInt(maxLength-3)+3;
-//		boolean firstVowel = rand.nextBoolean();
-//		if(firstVowel)
-//		{
-//			name.append(randomVowel(true));
-//		}
-//		else
-//		{
-//			name.append(randomNonVowel(true));
-//		}
 		name.append(randomLetter(true));
 		
 		
@@ -220,8 +75,6 @@ public class NameGenerator {
 	 */
 	private char nextLetter(String name)
 	{
-
-
 				char nextChar;
 				boolean validChar;
 				
@@ -233,20 +86,36 @@ public class NameGenerator {
 						char twoAway = name.charAt(name.length()-2);
 						boolean oneAwayVowel = isVowel(name.charAt(name.length()-1));
 						boolean twoAwayVowel = isVowel(name.charAt(name.length()-2));
-						
-						if(higherH.contains(oneAway));
+	
+						if(name.length()==maxLength-1)
 						{
-							if(boolChance(4,10)==true)
+							if(allVowels.contains(name.charAt(0)))
 							{
-								nextChar = 'h';
+								boolean anotherVowel =boolChance(1,1000);
+								if(anotherVowel)
+								{
+									nextChar = randomVowel(boolChance(1,700));
+								}
+								else
+								{
+									nextChar = randomNonVowel(boolChance(1,700));
+								}
 							}
 							else
 							{
-	
+								boolean anotherNonVowel = boolChance(1,1000);
+								if(anotherNonVowel)
+								{
+									nextChar = randomNonVowel(boolChance(1,700));
+								}
+								else
+								{
+									nextChar = randomVowel(boolChance(1,700));
+								}
 							}
 						}
 						//if last 2 are vowels 999 out of 1000 chance of non vowel
-						if(oneAwayVowel && twoAwayVowel)
+						else if(oneAwayVowel && twoAwayVowel)
 						{
 							boolean anotherVowel =boolChance(1,1000);
 							if(anotherVowel)
@@ -280,7 +149,43 @@ public class NameGenerator {
 					}	
 					else
 					{
-						nextChar = randomLetter(boolChance(1,1000));
+						if(name.charAt(0) == 'Y')
+						{
+							boolean anotherNonVowel = boolChance(1,1000);
+							if(anotherNonVowel)
+							{
+								nextChar = randomNonVowel(boolChance(1,700));
+							}
+							else
+							{
+								nextChar = randomVowel(boolChance(1,700));
+							}
+						}
+						
+						if(vowelsNoY.contains(name.charAt(0)))
+						{
+							boolean anotherVowel =boolChance(1,1000);
+							if(anotherVowel)
+							{
+								nextChar = randomVowel(boolChance(1,700));
+							}
+							else
+							{
+								nextChar = randomNonVowel(boolChance(1,700));
+							}
+						}
+						else
+						{
+							boolean anotherNonVowel = boolChance(1,1000);
+							if(anotherNonVowel)
+							{
+								nextChar = randomNonVowel(boolChance(1,700));
+							}
+							else
+							{
+								nextChar = randomVowel(boolChance(1,700));
+							}
+						}
 						validChar = validateChar(nextChar,name);	
 					}
 
@@ -290,7 +195,9 @@ public class NameGenerator {
 
 	}
 	
-	
+	/*
+	 * checks the random letter and validates it based on a set of criteria
+	 */
 	private boolean validateChar(char c, String str)
 	{
 		boolean validChar = true;
@@ -301,11 +208,6 @@ public class NameGenerator {
 				char twoAway = str.charAt(str.length()-2);
 				
 				if(noRepeatsUnlessVowelFirst.contains(c) && oneAway == c && !isVowel(twoAway))
-				{
-					validChar = boolChance(5,100);
-				}
-				
-				if(mustFollowVowel.contains(c) && c == oneAway)
 				{
 					validChar = boolChance(5,100);
 				}
@@ -326,8 +228,279 @@ public class NameGenerator {
 		{
 			validChar = boolChance(5,100);
 		}
+		
+		validChar = appropriateNext(c);
+		
+		if(c=='y')
+		{
+			validChar = boolChance(4,10);
+		}
 
 		return validChar;
+	}
+	
+	private boolean appropriateNext(char c)
+	{
+		boolean valid = false;
+		switch(c)
+		{
+		case 'b':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = letterPercent(c,15,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'B':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = letterPercent(c,15,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'c':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,'r');
+			if(valid == false) valid = letterPercent(c,100,'h');
+			if(valid == false) valid = letterPercent(c,100,'k');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'C':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,'r');
+			if(valid == false) valid = letterPercent(c,100,'h');
+			if(valid == false) valid = letterPercent(c,100,'k');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'd':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,'r');
+			if(valid == false) valid = letterPercent(c,15,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'D':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,'r');
+			if(valid == false) valid = letterPercent(c,15,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'f':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'F':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'g':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = letterPercent(c,15,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'G':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = letterPercent(c,15,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'h':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,40,trailingSpec2);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'H':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,40,trailingSpec2);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'j':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,20,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'J':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,20,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'k':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'K':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'l':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,50,'l');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'L':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'm':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,'b');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'M':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,'b');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'n':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,'p');
+			if(valid == false) valid = boolChance(5,100);
+			return valid;
+		case 'N':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,'p');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'p':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,40,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'P':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,40,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'q':
+			valid = letterPercent(c,50,lowerVowels);
+			if(valid == false) valid = letterPercent(c,50,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,'u');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'Q':
+			valid = letterPercent(c,50,lowerVowels);
+			if(valid == false) valid = letterPercent(c,50,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,'u');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'r':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec2);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'R':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,100,trailingSpec2);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 's':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,70,'t');
+			if(valid == false) valid = letterPercent(c,100,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'S':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,70,'t');
+			if(valid == false) valid = letterPercent(c,100,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 't':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,70,'t');
+			if(valid == false) valid = letterPercent(c,100,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'T':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,70,'t');
+			if(valid == false) valid = letterPercent(c,100,'h');
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'v':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'V':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'w':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,50,trailingSpec2);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'W':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,50,trailingSpec2);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'x':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'X':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'z':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+		case 'Z':
+			valid = letterPercent(c,100,lowerVowels);
+			if(valid == false) valid = letterPercent(c,100,upperVowels);
+			if(valid == false) valid = letterPercent(c,30,trailingSpec1);
+			if(valid == false) valid = boolChance(3,100);
+			return valid;
+			
+		
+		
+		default:
+				return true;
+		}
 	}
 	
 	/*
@@ -376,6 +549,38 @@ public class NameGenerator {
 			{
 				return 'y';
 			}
+		}
+	}
+	
+	/*
+	 * Returns a boolean based on percent chance if the letter is specified in tests.
+	 * Otherwise it returns true if the letter is not in tests.
+	 */
+	private boolean letterPercent(char c,int percent,char ... tests)
+	{
+		boolean testsContains = false;
+		for(char el: tests)
+		{
+			if(el==c)
+			{
+				testsContains = true;
+			}
+		}
+		
+		if(testsContains)
+		{
+			if(boolChance(percent,100))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return true;
 		}
 	}
 	
